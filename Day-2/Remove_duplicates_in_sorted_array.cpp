@@ -8,6 +8,7 @@
 
 //  Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
 //  Return k.
+//Brute-Force approach-
 // Time Complexity: 𝑂(𝑁log⁡𝑁) (due to set insertion).
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,8 +34,19 @@ int removeDuplicates(vector<int>& arr) {
     return s.size();
 }
 
-int main() {
-    vector<int> arr = {1, 2, 2, 2, 3};
-    cout << removeDuplicates(arr) << endl;
-    return 0;
+//Optimal approach-
+//Time Complexity:O(n)
+//space complexity :O(n)
+
+int removeDuplicates(vector<int> &arr, int n) {
+	int i=0;
+	for(int j=1;j<n;j++)
+	{
+		if(arr[j]!=arr[i])
+		{
+			arr[i+1]=arr[j];
+			i++;
+		}
+	}
+	return i+1;
 }
